@@ -73,7 +73,7 @@ jobs:
           template: artifact/deployment.yaml
           parameter-overrides: "Environment=-Test"     
 
-   test-prod:
+  prod-deploy:
     runs-on: ubuntu-latest
     environment: Prod
     needs: build
@@ -94,6 +94,6 @@ jobs:
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
-          name: first-lambda-cloudformation
+          name: first-lambda-cloudformation-prod
           template: artifact/deployment.yaml
           parameter-overrides: "Environment="
